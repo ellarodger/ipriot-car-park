@@ -65,18 +65,19 @@ This guide provides detailed step-by-step instructions for completing the projec
 Include a screenshot of your GitHub repository **after** you have pushed your initial commit.
 
 
-![img.png](images/img.png)
+![img.png](images/created_classes.png)
 
 
 ### Identify classes, methods, and attributes
 
 After reading the task requirements, you should be able to identify the classes, methods, and attributes required for the car park system. Complete the following table with the classes, methods, and attributes you must implement.
 
-| Class Name | Attributes                     | Methods                                              |
-| ---------- |--------------------------------|------------------------------------------------------|
-| `CarPark`    | Location<br/>Name<br/>Max Bays |                                                      |
-| `Sensor`     | Vechicle Number Plate          | Detect Vehicles Entering<br/>Detect Vehicles Exiting |
-| `Display`    | Bays Available<br/>Name        | Update Display                                       |
+| Class Name | Attributes                                                         | Methods                                                                  |
+| ---------- |--------------------------------------------------------------------|--------------------------------------------------------------------------|
+| `CarPark`    | Location<br/>Name<br/>Max Bays <br/>Sensors<br/>Display<br/>Plates | Update Display<br/>Update Car Park                                       |
+| `Sensor`     | Car Park<br/>Vechicle Number Plate<br/>Location<br/>ID             | Detect Vehicles Entering<br/>Detect Vehicles Exiting<br/>Update Car Park |
+| `Display`    | Car Park<br/>Bays Available<br/>ID                                 | Update Displays                                                          |
+
 
 **Evidencing:**
 Ensure you have completed the previous table and include at least two methods and attributes for each.
@@ -103,10 +104,8 @@ Ensure you have completed the previous table and include at least two methods an
 
 **Evidencing:**
 Include a screenshot of your GitHub repository `src/` directory **after** you have pushed your changes.
+![img.png](images/added_stubs.png)
 
-```markdown
-![Added stubs for classes](images/stubs-for-classes.png)
-```
 
 ### Add constructors and attributes to the classes
 
