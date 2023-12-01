@@ -17,8 +17,6 @@ class CarPark:
         self.sensors = sensors or []
         self.displays = displays or []
 
-    def __str__(self):
-        return f"{self.name} at {self.location} with a capacity of {self.max_bays} bays"
 
     def register(self, component):
         if not isinstance(component, (Sensor, Display)):
@@ -50,3 +48,6 @@ class CarPark:
         if len(self.plates) >= self.max_bays:
             return 0
         return self.max_bays - len(self.plates)
+
+    def __str__(self):
+        return f"{self.name} at {self.location} with a capacity of {self.max_bays} bays"
