@@ -1,9 +1,9 @@
 from display import Display
-from sensor import  Sensor
+from sensor import Sensor
 
 
 class CarPark:
-    def __int__(self,
+    def __init__(self,
                 location,
                 name,
                 max_bays,

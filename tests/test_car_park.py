@@ -13,7 +13,7 @@ class TestCarPark(unittest.TestCase):
         self.assertIsInstance(self.car_park, CarPark)
         self.assertEqual(self.car_park.location, "123 Example Street")
         self.assertEqual(self.car_park.name, "CPP Moondalup")
-        self.assertEqual(self.car_park.capacity, 100)
+        self.assertEqual(self.car_park.max_bays, 100)
         self.assertEqual(self.car_park.plates, [])
         self.assertEqual(self.car_park.sensors, [])
         self.assertEqual(self.car_park.displays, [])

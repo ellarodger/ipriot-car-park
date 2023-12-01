@@ -435,7 +435,7 @@ This time, we will push the tag to the remote repository:
    ```
 
 Add a screenshot of the GitHub repository after pushing the tag, showing the CarPark class with the new methods:
-![img.png](images/AddedMethods.png)
+![img.png](images/added_methods.png)
 
 
 Answer the following questions:
@@ -698,10 +698,10 @@ if __name__ == "__main__":
 **Evidencing:**
 
 1. Add a screenshot of the output of the unit tests. If any failed, add a screenshot of the error message and a screenshot after you have fixed the errors:
-
-   ```markdown
-   ![Unit tests](images/unit-tests.png)
-   ```
+![img.png](images/import_error.png)
+![img_1.png](images/type_error.png)
+![img_2.png](images/attribute_error.png)
+![img_3.png](images/no_errors.png)
 
 2. Commit your changes to the local repository. Tag the commit with `s6` so your lecturer can find it:
 3. Push the tag to the remote repository:

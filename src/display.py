@@ -1,5 +1,5 @@
 class Display:
-    def __int__(self,
+    def __init__(self,
                 id,
                 car_park,
                 message="",
