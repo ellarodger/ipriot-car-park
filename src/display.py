@@ -3,15 +3,15 @@ class Display:
                 id,
                 car_park,
                 message="",
-                is_on=False):
+                is_active=False):
         self.id = id
         self.car_park = car_park
-        self.message = message or []
-        self.is_on = is_on or []
+        self.message = message
+        self.is_on = is_active
 
     def update(self, data):
         for key, value in data.items():
             print(f"{key}: {value}")
     def __str__(self):
-        return f"Display {self.id}: {self.message}"
+        return f'Display {self.id} is {"is active" if self.is_on else "is active"}'
 

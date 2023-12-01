@@ -205,7 +205,7 @@ You realize that you need a way to configure the car park system. You decide to 
 **Evidencing:**
 Ensure that you have completed the previous steps and created the appropriate tags. Confirm that the tags have been created by running `git tag` in the terminal and provide a screenshot of the output.
 
-![img.png](tags/img.png)
+![img.png](images/tags.png)
 
 
 ### Relate the classes
@@ -365,13 +365,11 @@ You may want to see the number of available bays, the current temperature, and t
 Now consider, between the `CarPark`, `Sensor`, and `Display` classes, which class is responsible for each of these pieces of information? There's no right or wrong answer here. But you should be able to justify your answer.
 
 Q. Which class is responsible for the number of available bays (and why)? <br>
-   CarPark. It is an 'attribute' that is calculated by completing arithmetic functions on the attributes, max_bays and length of the plates list, therefore, it makes the most logical sense for the CarPark class to be responsible for it. <br>
-
+   
 Q. Which class is responsible for the current temperature (and why)? <br>
-   At this stage because it is hard coded for simplicity's sake the CarPark class is responsible for the attribute. However, in a more robust program, I believe the Sensor class should be responsible for the attribute as it would be detected by a temperature sensor
-
+   
 Q. Which class is responsible for the time (and why)? <br>
-   CarPark. Similar to the available bays 'attribute' it is an attribute which is accessed through the use of a function so, for simplicity's sake it would be best if it was a property within the CarPark class. It makes the most logical sense for the data to be handled in the CarPark class or the Sensor Class as the display class is responsible for displaying all the data not initialising it.  
+     
 --------
 
 ##### Detour: implement available bays
@@ -437,27 +435,25 @@ This time, we will push the tag to the remote repository:
    ```
 
 Add a screenshot of the GitHub repository after pushing the tag, showing the CarPark class with the new methods:
+![img.png](images/AddedMethods.png)
 
-```markdown
-![Added methods to the car park class](images/methods-to-car-park.png)
-```
 
 Answer the following questions:
 > **Review Questions**
 >
 > 1. **Which class is responsible for each of the following pieces of information (and why)?**
 >    - *The number of available bays*  
->      `Answer here...`
+>      `CarPark. It is an 'attribute' that is calculated by completing arithmetic functions on the attributes, max_bays and length of the plates list, therefore, it makes the most logical sense for the CarPark class to be responsible for it.`
 >    - *The current temperature*  
->      `Answer here...`
+>      `At this stage because it is hard coded for simplicity's sake the CarPark class is responsible for the attribute. However, in a more robust program, I believe the Sensor class should be responsible for the attribute as it would be detected by a temperature sensor`
 >    - *The time*  
->      `Answer here...`
+>      `CarPark. Similar to the available bays 'attribute' it is an attribute which is accessed through the use of a function so, for simplicity's sake it would be best if it was a property within the CarPark class. It makes the most logical sense for the data to be handled in the CarPark class or the Sensor Class as the display class is responsible for displaying all the data not initialising it.`
 >
 > 2. **What is the difference between an attribute and a property?**  
->    `Answer here...`
+>    `An attribute is a variable assigned within a class that is shared between all of it's instantce. Whereas, a property is a method which is defined as a property using @property decorator which results in it behaving as if it were an attribute. `
 >
 > 3. **Why do you think we used a dictionary to hold the data we passed the display? List at least one advantage and one disadvantage of this approach.**  
->    `Answer here...`
+>    `A dictionary is a useful data structure as it holds data as well as a simple context to the data (key). The biggest disadvantage of using a dictionary is that it typically takes up more space than other data structures`
 
 
 #### Add a detect vehicle method to the Sensor class
@@ -530,7 +526,7 @@ classDiagram
    ```python
    # ... inside the EntrySensor class
    def update_car_park(self, plate):
-      self.car_park.add_car(plate)
+      self.car_park.add_vehicle(plate)
       print(f"Incoming 🚘 vehicle detected. Plate: {plate}")
    ```
 
@@ -539,7 +535,7 @@ classDiagram
    ```python
    # ... inside the ExitSensor class
    def update_car_park(self, plate):
-      self.car_park.remove_car(plate)
+      self.car_park.remove_vehicle(plate)
       print(f"Outgoing 🚗 vehicle detected. Plate: {plate}")
    ```
 
@@ -641,46 +637,47 @@ The following unit tests test the `CarPark` class. They test the `__init__` meth
 import unittest
 from car_park import CarPark
 
+
 class TestCarPark(unittest.TestCase):
-      def setUp(self):
-         self.car_park = CarPark("123 Example Street", 100)
-   
-      def test_car_park_initialized_with_all_attributes(self):
-         self.assertIsInstance(self.car_park, CarPark)
-         self.assertEqual(self.car_park.location, "123 Example Street")
-         self.assertEqual(self.car_park.capacity, 100)
-         self.assertEqual(self.car_park.plates, [])
-         self.assertEqual(self.car_park.sensors, [])
-         self.assertEqual(self.car_park.displays, [])
-         self.assertEqual(self.car_park.available_bays, 100)
-   
-      def test_add_car(self):
-         self.car_park.add_car("FAKE-001")
-         self.assertEqual(self.car_park.plates, ["FAKE-001"])
-         self.assertEqual(self.car_park.available_bays, 99)
-   
-      def test_remove_car(self):
-         self.car_park.add_car("FAKE-001")
-         self.car_park.remove_car("FAKE-001")
-         self.assertEqual(self.car_park.plates, [])
-         self.assertEqual(self.car_park.available_bays, 100)
+   def setUp(self):
+      self.car_park = CarPark("123 Example Street", 100)
 
-      def test_overfill_the_car_park(self):
-         for i in range(100):
-            self.car_park.add_car(f"FAKE-{i}")
-         self.assertEqual(self.car_park.available_bays, 0)
-         self.car_park.add_car("FAKE-100")
-         # Overfilling the car park should not change the number of available bays
-         self.assertEqual(self.car_park.available_bays, 0)
+   def test_car_park_initialized_with_all_attributes(self):
+      self.assertIsInstance(self.car_park, CarPark)
+      self.assertEqual(self.car_park.location, "123 Example Street")
+      self.assertEqual(self.car_park.capacity, 100)
+      self.assertEqual(self.car_park.plates, [])
+      self.assertEqual(self.car_park.sensors, [])
+      self.assertEqual(self.car_park.displays, [])
+      self.assertEqual(self.car_park.available_bays, 100)
 
-         # Removing a car from an overfilled car park should not change the number of available bays   
-         self.car_park.remove_car("FAKE-100")
-         self.assertEqual(self.car_park.available_bays, 0)
+   def test_add_car(self):
+      self.car_park.add_vehicle("FAKE-001")
+      self.assertEqual(self.car_park.plates, ["FAKE-001"])
+      self.assertEqual(self.car_park.available_bays, 99)
 
-      def test_removing_a_car_that_does_not_exist(self):
-         with self.assertRaises(ValueError):
-            self.car_park.remove_car("NO-1")
-         
+   def test_remove_car(self):
+      self.car_park.add_vehicle("FAKE-001")
+      self.car_park.remove_vehicle("FAKE-001")
+      self.assertEqual(self.car_park.plates, [])
+      self.assertEqual(self.car_park.available_bays, 100)
+
+   def test_overfill_the_car_park(self):
+      for i in range(100):
+         self.car_park.add_vehicle(f"FAKE-{i}")
+      self.assertEqual(self.car_park.available_bays, 0)
+      self.car_park.add_vehicle("FAKE-100")
+      # Overfilling the car park should not change the number of available bays
+      self.assertEqual(self.car_park.available_bays, 0)
+
+      # Removing a car from an overfilled car park should not change the number of available bays   
+      self.car_park.remove_vehicle("FAKE-100")
+      self.assertEqual(self.car_park.available_bays, 0)
+
+   def test_removing_a_car_that_does_not_exist(self):
+      with self.assertRaises(ValueError):
+         self.car_park.remove_vehicle("NO-1")
+
 
 if __name__ == "__main__":
    unittest.main()
