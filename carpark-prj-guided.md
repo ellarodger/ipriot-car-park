@@ -364,10 +364,14 @@ You may want to see the number of available bays, the current temperature, and t
 
 Now consider, between the `CarPark`, `Sensor`, and `Display` classes, which class is responsible for each of these pieces of information? There's no right or wrong answer here. But you should be able to justify your answer.
 
-Q. Which class is responsible for the number of available bays (and why)?
-Q. Which class is responsible for the current temperature (and why)?
-Q. Which class is responsible for the time (and why)?
+Q. Which class is responsible for the number of available bays (and why)? <br>
+   CarPark. It is an 'attribute' that is calculated by completing arithmetic functions on the attributes, max_bays and length of the plates list, therefore, it makes the most logical sense for the CarPark class to be responsible for it. <br>
 
+Q. Which class is responsible for the current temperature (and why)? <br>
+   At this stage because it is hard coded for simplicity's sake the CarPark class is responsible for the attribute. However, in a more robust program, I believe the Sensor class should be responsible for the attribute as it would be detected by a temperature sensor
+
+Q. Which class is responsible for the time (and why)? <br>
+   CarPark. Similar to the available bays 'attribute' it is an attribute which is accessed through the use of a function so, for simplicity's sake it would be best if it was a property within the CarPark class. It makes the most logical sense for the data to be handled in the CarPark class or the Sensor Class as the display class is responsible for displaying all the data not initialising it.  
 --------
 
 ##### Detour: implement available bays
