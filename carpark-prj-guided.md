@@ -72,11 +72,11 @@ Include a screenshot of your GitHub repository **after** you have pushed your in
 
 After reading the task requirements, you should be able to identify the classes, methods, and attributes required for the car park system. Complete the following table with the classes, methods, and attributes you must implement.
 
-| Class Name | Attributes                                                         | Methods                                                                  |
-| ---------- |--------------------------------------------------------------------|--------------------------------------------------------------------------|
-| `CarPark`    | Location<br/>Name<br/>Max Bays <br/>Sensors<br/>Display<br/>Plates | Update Display<br/>Update Car Park                                       |
-| `Sensor`     | Car Park<br/>Vechicle Number Plate<br/>Location<br/>ID             | Detect Vehicles Entering<br/>Detect Vehicles Exiting<br/>Update Car Park |
-| `Display`    | Car Park<br/>Bays Available<br/>ID                                 | Update Displays                                                          |
+| Class Name | Attributes                                                         | Methods                                                |
+| ---------- |--------------------------------------------------------------------|--------------------------------------------------------|
+| `CarPark`    | Location<br/>Name<br/>Max Bays <br/>Sensors<br/>Display<br/>Plates | Update Display<br/>Remove Car<br/>Add Car<br/>Register |
+| `Sensor`     | Car Park<br/>Vechicle Number Plate<br/>Location<br/>ID             | Detect Vehicles <br/>Update Car Park                   |
+| `Display`    | Car Park<br/>Bays Available<br/>ID                                 | Update Displays                                        |
 
 
 **Evidencing:**
@@ -205,11 +205,8 @@ You realize that you need a way to configure the car park system. You decide to 
 **Evidencing:**
 Ensure that you have completed the previous steps and created the appropriate tags. Confirm that the tags have been created by running `git tag` in the terminal and provide a screenshot of the output.
 
-```bash
-[student@workstation ipriot-car-park-prj]$ git tag
-s1
-s2
-```
+![img.png](tags/img.png)
+
 
 ### Relate the classes
 
