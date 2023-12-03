@@ -2,7 +2,7 @@ from display import Display
 from sensor import Sensor
 from pathlib import Path
 from datetime import datetime
-
+import json
 
 class CarPark:
     def __init__(self,
@@ -58,5 +58,21 @@ class CarPark:
     def _log_car_activity(self, plate, action):
         with self.log_file.open("a") as file:
             file.write(f"{plate} {action} at {datetime.now():%Y-%m-%d %H:%M:%S}\n")
+
+    def write_config(self):
+        with open ("config.json", "w") as file:
+            json.dump({"location":self.location,
+                        "name":self.name,
+                        "max_bays":self.max_bays,
+                        "log_file":str(self.log_file)
+                       }, file)
+
+    @staticmethod
+    def from_config(config_file=Path("config.json")):
+        config_file = config_file if isinstance(config_file, Path) else Path(config_file)
+        with config_file.open() as file:
+            config = json.load(file)
+        return CarPark(config["location"], config["name"], config["max_bays"], log_file=config["log_file"])
+
     def __str__(self):
         return f"{self.name} at {self.location} with a capacity of {self.max_bays} bays"
