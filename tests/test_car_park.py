@@ -1,9 +1,6 @@
 import unittest
 from car_park import CarPark
 
-import unittest
-from car_park import CarPark
-
 
 class TestCarPark(unittest.TestCase):
     def setUp(self):
@@ -45,6 +42,10 @@ class TestCarPark(unittest.TestCase):
     def test_removing_a_car_that_does_not_exist(self):
         with self.assertRaises(ValueError):
             self.car_park.remove_vehicle("NO-1")
+
+    def test_register_raises_type_error(self):
+        with self.assertRaises(TypeError):
+            self.car_park.register("string text")
 
 
 if __name__ == "__main__":

@@ -11,7 +11,7 @@ class Display:
 
     def update(self, data):
         for key, value in data.items():
-            setattr(self, f"{key}", value)
+            setattr(self, key, value)
             print(f"{key}: {value}")
     def __str__(self):
         return f'Display {self.id} is {"is active" if self.is_on else "is active"}'
