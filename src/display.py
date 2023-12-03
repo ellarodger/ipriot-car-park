@@ -14,5 +14,5 @@ class Display:
             setattr(self, key, value)
             print(f"{key}: {value}")
     def __str__(self):
-        return f'Display {self.id} is {"is active" if self.is_on else "is active"}'
+        return f'Display {self.id} {"is active" if self.is_active else "is not active"}'
 
